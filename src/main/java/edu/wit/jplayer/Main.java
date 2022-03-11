@@ -8,11 +8,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    public static Stage stage;
 
     @Override
     public void start(Stage s) throws IOException {
-        stage = s;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("views/JPlayerView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         s.setTitle("JPlayer");
