@@ -1,5 +1,6 @@
 package edu.wit.jplayer.controllers;
 
+import edu.wit.jplayer.core.Config;
 import edu.wit.jplayer.core.Globals;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,8 +16,10 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -28,15 +31,26 @@ public class JPlayerController implements Initializable {
     @FXML
     private TextField fileViewFilterField;
     private final ArrayList<String> pathNavigator = new ArrayList<>();
+    private final Config config = new Config();
     private int pathNavigatorIndex = 0;
     private MediaPlayer mediaPlayer;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pathNavigator.add(System.getProperty("user.home"));
-        generateFileView(System.getProperty("user.home"));
+        try {
+            config.read();
+            pathNavigatorIndex = Integer.parseInt(config.getProperties().getProperty("path_navigator_index"));
+        } catch (IOException e) {
+            config.getProperties().put("path", System.getProperty("user.home"));
+            config.getProperties().put("path_navigator_index", pathNavigatorIndex);
+            config.save();
+        }
+        generateFileView(config.getProperties().getProperty("path"));
     }
+
+
+
 
     private void addFileViewFilterFieldListener(ObservableList<String> filesForView){
         FilteredList<String> filteredList = new FilteredList<>(filesForView, data -> true);

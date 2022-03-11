@@ -5,27 +5,20 @@ import java.util.Properties;
 
 public class Config {
     private final File configPath = new File(System.getProperty("user.home") + File.separator + ".jplayer");
-    private final File configFile = new File(File.separator + configPath + "config.properties");
+    private final File configFile = new File(configPath +  File.separator + "config.properties");
     private final Properties properties = new Properties();
 
 
-    public Config() {
-        if (!configPath.mkdirs())
-            System.out.println("Failed to create configuration directory.");
-
-    }
-
-    public void read(){
+    public void read() throws IOException {
         try (FileInputStream in = new FileInputStream(configFile)){
             properties.loadFromXML(in);
-        }  catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
-    public void save(){
-        try (OutputStream out = new FileOutputStream(configFile)) {
-            properties.storeToXML(out, "JPlayer configuration.");
+    public void save() {
+        try (FileOutputStream out = new FileOutputStream(configFile)) {
+            read();
+            properties.storeToXML(out, "JPlayer config."); //TODO: comment convection.
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,5 +26,9 @@ public class Config {
 
     public Properties getProperties() {
         return properties;
+    }
+
+    public boolean exists() {
+        return configFile.exists();
     }
 }
