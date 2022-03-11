@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="999.0" style="-fx-background-color: #2D2D30;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wit.jplayer.controllers.JPlayerController">
+   <children>
+      <AnchorPane prefHeight="612.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fx:id="pathView" fill="WHITE" layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="736.181640625">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button layoutX="919.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&lt;&lt;" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="2.0" />
+            <Button layoutX="964.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&gt;&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
+            <ListView fx:id="fileView" onMouseClicked="#onFileViewClick" prefHeight="519.0" prefWidth="999.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
+            <TextField fx:id="fileViewFilterField" layoutX="757.0" layoutY="2.0" minHeight="20.0" prefHeight="26.0" prefWidth="152.0" promptText="Search..." AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="2.0" />
+            <HBox alignment="CENTER" layoutX="217.0" layoutY="558.0" prefHeight="54.0" prefWidth="600.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="182.0">
+               <children>
+                  <ImageView>
+                     <image>
+                        <Image url="@../images/seek.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView>
+                     <image>
+                        <Image url="@../images/play.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView pickOnBounds="true" rotate="180.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@../images/seek.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="143.0" layoutY="538.0" prefHeight="40.0" prefWidth="748.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="108.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
+                  <Slider prefHeight="14.0" prefWidth="768.0" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="825.0" layoutY="585.0" prefHeight="26.0" prefWidth="168.0" spacing="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="6.0">
+               <children>
+                  <ImageView fitHeight="16.0" fitWidth="16.0">
+                     <image>
+                        <Image url="@../images/volume-mute.png" />
+                     </image>
+                  </ImageView>
+                  <Slider />
+                  <ImageView fitHeight="18.0" fitWidth="18.0">
+                     <image>
+                        <Image url="@../images/volume-up.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
