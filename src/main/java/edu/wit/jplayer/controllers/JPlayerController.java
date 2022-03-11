@@ -41,14 +41,12 @@ public class JPlayerController implements Initializable {
     private void addFileViewFilterFieldListener(ObservableList<String> filesForView){
         FilteredList<String> filteredList = new FilteredList<>(filesForView, data -> true);
         fileView.setItems(filteredList);
-        fileViewFilterField.textProperty().addListener(((observable, oldValue, newValue) -> {
-            filteredList.setPredicate(data -> {
-                boolean filter = newValue == null || newValue.isEmpty();
-                if (!filter)
-                    filter = data.toLowerCase(Locale.ROOT).contains(newValue.toLowerCase(Locale.ROOT));
-                return filter;
-            });
-        }));
+        fileViewFilterField.textProperty().addListener(((observable, oldValue, newValue) -> filteredList.setPredicate(data -> {
+            boolean filter = newValue == null || newValue.isEmpty();
+            if (!filter)
+                filter = data.toLowerCase(Locale.ROOT).contains(newValue.toLowerCase(Locale.ROOT));
+            return filter;
+        })));
     }
 
     private void generateFileView(String path) {
@@ -104,5 +102,10 @@ public class JPlayerController implements Initializable {
         } catch (IndexOutOfBoundsException e) {
             pathNavigatorIndex = previousPathNavigatorIndex;
         }
+    }
+
+    @FXML
+    private void onJPlayerHyperlinkAction(ActionEvent actionEvent){
+        Globals.openBrowser("https://github.com/sunset-developer/JPlayer");
     }
 }
