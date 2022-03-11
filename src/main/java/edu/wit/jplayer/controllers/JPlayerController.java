@@ -81,10 +81,10 @@ public class JPlayerController implements Initializable {
         String selected = fileView.getSelectionModel().getSelectedItem();
         if (mouseEvent.getClickCount() == 2 && selected != null) {
             if (Globals.hasValidExtension(selected))
-                openDirectory();
-            else {
                 //Play audio here.
                 return;
+            else {
+                openDirectory();
             }
         }
     }

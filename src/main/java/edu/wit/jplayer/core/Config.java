@@ -10,14 +10,15 @@ public class Config {
 
 
     public Config() {
-        configPath.mkdirs();
+        if (!configPath.mkdirs())
+            System.out.println("Failed to create configuration directory.");
+
     }
 
     public void read(){
         try (FileInputStream in = new FileInputStream(configFile)){
             properties.loadFromXML(in);
-        } catch (IOException e) {
-            System.out.println("Expected on first run.");
+        }  catch (IOException e) {
             e.printStackTrace();
         }
     }
