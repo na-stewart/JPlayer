@@ -63,7 +63,6 @@ public class JPlayerController{
         Button button = (Button) actionEvent.getSource();
         fileExplorer.navigateDirectories(button.getText().equals(">>"));
         generateViews();
-
     }
 
     @FXML
