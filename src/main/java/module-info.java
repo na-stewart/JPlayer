@@ -6,6 +6,6 @@ module edu.wit.jplayer {
 
     opens edu.wit.jplayer to javafx.fxml;
     exports edu.wit.jplayer;
-    exports edu.wit.jplayer.controllers;
-    opens edu.wit.jplayer.controllers to javafx.fxml;
+    exports edu.wit.jplayer.core.controllers;
+    opens edu.wit.jplayer.core.controllers to javafx.fxml;
 }
