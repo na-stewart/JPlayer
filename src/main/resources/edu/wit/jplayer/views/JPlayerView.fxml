@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="999.0" style="-fx-background-color: #2D2D30;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wit.jplayer.core.controllers.JPlayerController">
    <children>
       <AnchorPane prefHeight="612.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -19,7 +23,7 @@
             <Button layoutX="964.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&gt;&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
             <ListView fx:id="filesView" onMouseClicked="#onFileViewClick" prefHeight="519.0" prefWidth="999.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
             <TextField fx:id="filesViewFilterField" layoutX="777.0" layoutY="2.0" minHeight="20.0" prefHeight="26.0" prefWidth="152.0" promptText="Search..." AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="2.0" />
-            <HBox alignment="CENTER" layoutX="217.0" layoutY="558.0" prefHeight="54.0" prefWidth="600.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="182.0">
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="558.0" prefHeight="54.0" prefWidth="600.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="199.0">
                <children>
                   <ImageView>
                      <image>
@@ -41,7 +45,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="143.0" layoutY="538.0" prefHeight="40.0" prefWidth="748.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="108.0">
+            <HBox alignment="CENTER" layoutX="281.0" layoutY="538.0" prefHeight="40.0" prefWidth="438.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="280.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
                   <Slider prefHeight="14.0" prefWidth="768.0" />
@@ -63,7 +67,21 @@
                   </ImageView>
                </children>
             </HBox>
-            <Hyperlink layoutY="587.0" onAction="#onJPlayerHyperlinkAction" text="JPlayer" textAlignment="CENTER" textFill="WHITE" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+            <ImageView fx:id="albumImageView" fitHeight="54.0" fitWidth="53.0" layoutX="7.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0">
+               <image>
+                  <Image url="@../images/album-placeholder.jpg" />
+               </image>
+            </ImageView>
+            <Text fx:id="mediaNameText" fill="WHITE" layoutX="70.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="35.486328125" AnchorPane.leftAnchor="70.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="authorNameText" fill="WHITE" layoutX="70.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="35.865234375" AnchorPane.leftAnchor="70.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

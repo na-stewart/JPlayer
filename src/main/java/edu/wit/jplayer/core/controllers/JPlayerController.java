@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
@@ -23,6 +24,12 @@ public class JPlayerController{
     private Text directoryView;
     @FXML
     private TextField filesViewFilterField;
+    @FXML
+    private ImageView albumImageView;
+    @FXML
+    private Text mediaNameText;
+    @FXML
+    private Text mediaAuthorText;
     private final FileExplorer fileExplorer = new FileExplorer();
     private MediaPlayer mediaPlayer;
 
