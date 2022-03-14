@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +31,14 @@ public class JPlayerController{
     private Text mediaNameText;
     @FXML
     private Text mediaAuthorText;
+    @FXML
+    private Text mediaTimeElapsedText;
+    @FXML
+    private Text mediaTimeRemainingText;
+    @FXML
+    private Slider volumeSlider;
+    @FXML
+    private Slider seekSlider;
     private final FileExplorer fileExplorer = new FileExplorer();
     private MediaPlayer mediaPlayer;
 

@@ -47,9 +47,9 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="281.0" layoutY="538.0" prefHeight="40.0" prefWidth="438.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="280.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
-                  <Slider prefHeight="14.0" prefWidth="768.0" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
+                  <Text fx:id="mediaTimeElapsedText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
+                  <Slider fx:id="volumeSlider" prefHeight="14.0" prefWidth="768.0" />
+                  <Text fx:id="mediaTimeRemainingText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="825.0" layoutY="585.0" prefHeight="26.0" prefWidth="168.0" spacing="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="6.0">
@@ -59,7 +59,7 @@
                         <Image url="@../images/volume-mute.png" />
                      </image>
                   </ImageView>
-                  <Slider />
+                  <Slider fx:id="volumeSlider" />
                   <ImageView fitHeight="18.0" fitWidth="18.0">
                      <image>
                         <Image url="@../images/volume-up.png" />
