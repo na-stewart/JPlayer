@@ -1,20 +1,21 @@
 package edu.wit.jplayer.core;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class Globals {
-    public static String[] validMediaExtensions = {".aif", ".aiff", ".fxm", ".flv", ".m3u8", ".mp3", ".mp4", ".m4a",
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    public static String[] VALID_MEDIA_EXTENSIONS = {".aif", ".aiff", ".fxm", ".flv", ".m3u8", ".mp3", ".mp4", ".m4a",
             ".m4v", ".wav"};
 
-    public static boolean hasValidExtension(String name){
-        for (String extension : validMediaExtensions)
+    public static boolean HAS_VALID_EXTENSION(String name){
+        for (String extension : VALID_MEDIA_EXTENSIONS)
             if (name.endsWith(extension))
                 return true;
         return false;
     }
 
-    public static void openBrowser(String url) {
+    public static void OPEN_BROWSER(String url) {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();
         try {

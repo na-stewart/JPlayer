@@ -64,7 +64,7 @@ public class JPlayerController{
         String selected = filesView.getSelectionModel().getSelectedItem();
         String fullSelectedPath = directoryView.getText() + File.separator + selected;
         if (mouseEvent.getClickCount() == 2 && selected != null) {
-            if (Globals.hasValidExtension(selected))
+            if (Globals.HAS_VALID_EXTENSION(selected))
                 //Play audio here.
                 return;
             else {
@@ -83,6 +83,6 @@ public class JPlayerController{
 
     @FXML
     private void onJPlayerHyperlinkAction(ActionEvent actionEvent){
-        Globals.openBrowser("https://github.com/sunset-developer/JPlayer");
+        Globals.OPEN_BROWSER("https://github.com/sunset-developer/JPlayer");
     }
 }

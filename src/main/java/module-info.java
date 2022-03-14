@@ -2,6 +2,7 @@ module edu.wit.jplayer {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires java.logging;
 
 
     opens edu.wit.jplayer to javafx.fxml;

@@ -10,16 +10,17 @@ public class Config extends Properties {
 
 
     public Config(){
+        //noinspection ResultOfMethodCallIgnored
         configPath.mkdirs();
     }
 
-    public void read() throws IOException {
+    public final void read() throws IOException {
         try (FileInputStream in = new FileInputStream(configFile)){
             loadFromXML(in);
         }
     }
 
-    public void save() {
+    public final void save() {
         try (FileOutputStream out = new FileOutputStream(configFile)) {
             try {
                 read();

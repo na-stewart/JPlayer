@@ -24,7 +24,7 @@ public class FileExplorer {
         }
     }
 
-    public void addDirectory(String directory) {
+    public final void addDirectory(String directory) {
         directoriesNavigationIndex++;
         if (directoriesNavigationIndex < directories.size())
             directories.subList(directoriesNavigationIndex, directories.size()).clear();
@@ -34,7 +34,7 @@ public class FileExplorer {
         config.save();
     }
 
-    public void navigateDirectories(boolean forward) {
+    public final void navigateDirectories(boolean forward) {
         int updatedNavigationIndex = forward ? directoriesNavigationIndex + 1 : directoriesNavigationIndex - 1;
         if (updatedNavigationIndex < directories.size() && updatedNavigationIndex >= 0) {
             directoriesNavigationIndex = updatedNavigationIndex;
@@ -43,13 +43,13 @@ public class FileExplorer {
         }
     }
 
-    public ArrayList<String> getFiles() throws IndexOutOfBoundsException {
+    public final ArrayList<String> getFiles() throws IndexOutOfBoundsException {
         File[] directoryFiles = new File(directories.get(directoriesNavigationIndex)).listFiles();
         ArrayList<String> filteredDirectoryFiles = new ArrayList<>();
         if (directoryFiles != null) {
             for (File file : directoryFiles) {
                 String fileName = file.getName();
-                if (file.isDirectory() || Globals.hasValidExtension(fileName))
+                if (file.isDirectory() || Globals.HAS_VALID_EXTENSION(fileName))
                     filteredDirectoryFiles.add(fileName);
             }
         }
