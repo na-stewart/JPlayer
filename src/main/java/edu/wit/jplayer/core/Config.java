@@ -10,8 +10,9 @@ public class Config extends Properties {
 
 
     public Config(){
-        //noinspection ResultOfMethodCallIgnored
-        configPath.mkdirs();
+        if (!configPath.mkdirs())
+            Globals.LOGGER.warning("Configuration directory not created!");
+
     }
 
     public final void read() throws IOException {

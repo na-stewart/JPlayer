@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 public class Globals {
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    public static String[] VALID_MEDIA_EXTENSIONS = {".aif", ".aiff", ".fxm", ".flv", ".m3u8", ".mp3", ".mp4", ".m4a",
+    public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    public final static String[] VALID_MEDIA_EXTENSIONS = {".aif", ".aiff", ".fxm", ".flv", ".m3u8", ".mp3", ".mp4", ".m4a",
             ".m4v", ".wav"};
 
     public static boolean HAS_VALID_EXTENSION(String name){
