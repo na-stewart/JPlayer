@@ -1,2 +1,2 @@
 # JPlayer
-An all-in-one lightweight Java media player.
+An all-in-one Java media player.
