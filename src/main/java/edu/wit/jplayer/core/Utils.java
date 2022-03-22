@@ -3,7 +3,7 @@ package edu.wit.jplayer.core;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-public class Globals {
+public class Utils {
     public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public final static String[] VALID_MEDIA_EXTENSIONS = {".aif", ".aiff", ".fxm", ".flv", ".m3u8", ".mp3", ".mp4", ".m4a",
             ".m4v", ".wav"};

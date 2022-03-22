@@ -20,6 +20,7 @@ public class FileExplorer {
         } catch (IOException e) {
             directories.add(System.getProperty("user.home"));
             config.put("directories", String.join(",", directories));
+            config.put("directoriesNavigationIndex", directoriesNavigationIndex);
             config.save();
         }
     }
@@ -43,14 +44,13 @@ public class FileExplorer {
         }
     }
 
-    public final ArrayList<String> getFiles() throws IndexOutOfBoundsException {
+    public final ArrayList<File> getFiles() throws IndexOutOfBoundsException {
         File[] directoryFiles = new File(directories.get(directoriesNavigationIndex)).listFiles();
-        ArrayList<String> filteredDirectoryFiles = new ArrayList<>();
+        ArrayList<File> filteredDirectoryFiles = new ArrayList<>();
         if (directoryFiles != null) {
             for (File file : directoryFiles) {
-                String fileName = file.getName();
-                if (file.isDirectory() || Globals.HAS_VALID_EXTENSION(fileName))
-                    filteredDirectoryFiles.add(fileName);
+                if (file.isDirectory() || Utils.HAS_VALID_EXTENSION(file.getName()))
+                    filteredDirectoryFiles.add(file);
             }
         }
         return filteredDirectoryFiles;

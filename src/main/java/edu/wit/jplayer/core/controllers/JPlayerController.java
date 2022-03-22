@@ -1,15 +1,12 @@
 package edu.wit.jplayer.core.controllers;
 
 import edu.wit.jplayer.core.FileExplorer;
-import edu.wit.jplayer.core.Globals;
+import edu.wit.jplayer.core.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.MediaPlayer;
@@ -20,7 +17,7 @@ import java.util.Locale;
 
 public class JPlayerController{
     @FXML
-    private ListView<String> filesView;
+    private TableView<String> filesView;
     @FXML
     private Text directoryView;
     @FXML
@@ -45,6 +42,7 @@ public class JPlayerController{
 
     public void initialize() {
         generateViews();
+        //This is a change to the codebase.
     }
 
     private void generateViews() {
@@ -64,7 +62,7 @@ public class JPlayerController{
         String selected = filesView.getSelectionModel().getSelectedItem();
         String fullSelectedPath = directoryView.getText() + File.separator + selected;
         if (mouseEvent.getClickCount() == 2 && selected != null) {
-            if (Globals.HAS_VALID_EXTENSION(selected))
+            if (Utils.HAS_VALID_EXTENSION(selected))
                 //Play audio here.
                 return;
             else {
@@ -83,6 +81,6 @@ public class JPlayerController{
 
     @FXML
     private void onJPlayerHyperlinkAction(ActionEvent actionEvent){
-        Globals.OPEN_BROWSER("https://github.com/sunset-developer/JPlayer");
+        Utils.OPEN_BROWSER("https://github.com/sunset-developer/JPlayer");
     }
 }
