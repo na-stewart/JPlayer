@@ -44,13 +44,14 @@ public class FileExplorer {
         }
     }
 
-    public final ArrayList<File> getFiles() throws IndexOutOfBoundsException {
+    public final ArrayList<String> getFiles() throws IndexOutOfBoundsException {
         File[] directoryFiles = new File(directories.get(directoriesNavigationIndex)).listFiles();
-        ArrayList<File> filteredDirectoryFiles = new ArrayList<>();
+        ArrayList<String> filteredDirectoryFiles = new ArrayList<>();
         if (directoryFiles != null) {
             for (File file : directoryFiles) {
-                if (file.isDirectory() || Utils.HAS_VALID_EXTENSION(file.getName()))
-                    filteredDirectoryFiles.add(file);
+                String name = file.getName();
+                if ((file.isDirectory() || Utils.HAS_VALID_EXTENSION(name)) && !name.startsWith("."))
+                    filteredDirectoryFiles.add(file.getName());
             }
         }
         return filteredDirectoryFiles;

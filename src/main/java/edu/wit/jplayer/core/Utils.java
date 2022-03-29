@@ -1,12 +1,17 @@
 package edu.wit.jplayer.core;
 
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
 public class Utils {
     public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    public final static String[] VALID_MEDIA_EXTENSIONS = {".aif", ".aiff", ".fxm", ".flv", ".m3u8", ".mp3", ".mp4", ".m4a",
-            ".m4v", ".wav"};
+    public final static String[] VALID_MEDIA_EXTENSIONS = {".aif", ".aiff", ".wav", ".mp3"};
+    public final static File CACHE_PATH = new File(System.getProperty("user.home") + File.separator +
+            ".jplayer");
 
     public static boolean HAS_VALID_EXTENSION(String name){
         for (String extension : VALID_MEDIA_EXTENSIONS)
@@ -35,4 +40,13 @@ public class Utils {
             e.printStackTrace();
         }
     }
+
+    public static Text STR_TO_TEXT(String str) {
+        Text attributeView = new Text();
+        attributeView.setStyle("-fx-font: 14 system;");
+        attributeView.setFill(Color.WHITE);
+        attributeView.setText(str);
+        return attributeView;
+    }
+
 }

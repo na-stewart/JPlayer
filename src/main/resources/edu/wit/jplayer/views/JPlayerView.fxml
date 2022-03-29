@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
@@ -10,29 +11,116 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="999.0" style="-fx-background-color: #2D2D30;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wit.jplayer.core.controllers.JPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="999.0" style="-fx-background-color: #2D2D30;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wit.jplayer.core.controllers.JPlayerController">
    <children>
-      <AnchorPane prefHeight="612.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane layoutY="1.0" prefHeight="543.0" prefWidth="999.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Music">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutY="25.0" prefHeight="492.0" prefWidth="997.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Title" />
+                            <TableColumn prefWidth="75.0" text="Artist" />
+                              <TableColumn prefWidth="75.0" text="Album" />
+                              <TableColumn prefWidth="75.0" text="Duration" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <TextField layoutY="2.0" prefHeight="27.0" prefWidth="999.0" promptText="Search..." AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Albums">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView layoutY="25.0" prefHeight="492.0" prefWidth="132.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0" />
+                        <ListView layoutX="133.0" layoutY="26.0" prefHeight="491.0" prefWidth="864.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0" />
+                        <TextField layoutY="1.0" prefHeight="27.0" prefWidth="999.0" promptText="Search..." AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Settings">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="416.0" spacing="2.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose where we look for music:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <ListView prefHeight="200.0" prefWidth="200.0" />
+                                    <HBox prefHeight="22.0" prefWidth="416.0" spacing="10.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" text="Add" />
+                                          <Button mnemonicParsing="false" text="Remove" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER_LEFT" fillWidth="false" prefHeight="253.0" prefWidth="273.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Equalizer:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="17.0" prefWidth="285.0" spacing="13.0">
+                                       <children>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Low" textAlignment="CENTER" />
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Mid-Low" textAlignment="CENTER" />
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Mid" textAlignment="CENTER" />
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Mid-High" textAlignment="CENTER" wrappingWidth="53.830078125" />
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="High" textAlignment="CENTER" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="203.0" prefWidth="212.0" spacing="38.0">
+                                       <children>
+                                          <Slider orientation="VERTICAL" value="50.0" />
+                                          <Slider orientation="VERTICAL" value="50.0" />
+                                          <Slider orientation="VERTICAL" prefHeight="183.0" prefWidth="0.0" value="50.0" />
+                                          <Slider orientation="VERTICAL" value="50.0" />
+                                          <Slider orientation="VERTICAL" value="50.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="65.0" prefWidth="213.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cache:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" text="Clear" />
+                                          <Button mnemonicParsing="false" text="Reset Config" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <VBox layoutX="251.0" layoutY="549.0" prefHeight="62.0" prefWidth="497.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="251.0">
          <children>
-            <Text fx:id="directoryView" fill="WHITE" layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="736.181640625">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Button layoutX="929.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&lt;&lt;" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="2.0" />
-            <Button layoutX="964.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&gt;&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
-            <ListView fx:id="filesView" onMouseClicked="#onFileViewClick" prefHeight="519.0" prefWidth="999.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
-            <TableView layoutY="28.0" prefHeight="519.0" prefWidth="999.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="Name" />
-                <TableColumn prefWidth="75.0" text="Date Created" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-            <TextField fx:id="filesViewFilterField" layoutX="777.0" layoutY="2.0" minHeight="20.0" prefHeight="26.0" prefWidth="152.0" promptText="Search..." AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="2.0" />
-            <HBox alignment="CENTER" layoutX="200.0" layoutY="558.0" prefHeight="54.0" prefWidth="600.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="199.0">
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" spacing="30.0">
                <children>
                   <ImageView>
                      <image>
@@ -54,40 +142,29 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="281.0" layoutY="538.0" prefHeight="40.0" prefWidth="438.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="280.0">
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="438.0" spacing="5.0">
                <children>
                   <Text fx:id="mediaTimeElapsedText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
                   <Slider fx:id="volumeSlider" prefHeight="14.0" prefWidth="768.0" />
                   <Text fx:id="mediaTimeRemainingText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="825.0" layoutY="585.0" prefHeight="26.0" prefWidth="168.0" spacing="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="6.0">
-               <children>
-                  <ImageView fitHeight="16.0" fitWidth="16.0">
-                     <image>
-                        <Image url="@../images/volume-mute.png" />
-                     </image>
-                  </ImageView>
-                  <Slider fx:id="volumeSlider" />
-                  <ImageView fitHeight="18.0" fitWidth="18.0">
-                     <image>
-                        <Image url="@../images/volume-up.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <ImageView fx:id="albumImageView" fitHeight="54.0" fitWidth="53.0" layoutX="7.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0">
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="168.0" spacing="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="8.0">
+         <children>
+            <ImageView fitHeight="16.0" fitWidth="16.0">
                <image>
-                  <Image url="@../images/thumbnail-placeholder.jpg" />
+                  <Image url="@../images/volume-mute.png" />
                </image>
             </ImageView>
-            <Text fx:id="mediaNameText" fill="WHITE" layoutX="70.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="35.486328125" AnchorPane.leftAnchor="70.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <HBox layoutX="52.0" layoutY="517.0" prefHeight="100.0" prefWidth="200.0" />
+            <Slider fx:id="volumeSlider" />
+            <ImageView fitHeight="18.0" fitWidth="18.0">
+               <image>
+                  <Image url="@../images/volume-up.png" />
+               </image>
+            </ImageView>
          </children>
-      </AnchorPane>
+      </HBox>
    </children>
 </AnchorPane>
