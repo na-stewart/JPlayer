@@ -76,7 +76,7 @@ public class JPlayerController{
             seekSlider.setValue(newTime.toSeconds());
             mediaTimeRemainingText.setText(createDurationString((int) duration.toSeconds()));
             mediaTimeElapsedText.setText(createDurationString((int) newTime.toSeconds()));
-            mediaPlayer.setOnEndOfMedia(() -> filesView.getSelectionModel().select(filesView.getSelectionModel().getSelectedIndex() + 1));
+            mediaPlayer.setOnEndOfMedia(this::skip);
         });
     }
 
