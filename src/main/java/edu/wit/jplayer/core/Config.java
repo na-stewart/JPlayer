@@ -5,7 +5,15 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 public class Config extends Properties {
-    private final File configFile = new File(Utils.CACHE_PATH +  File.separator + "config.properties");
+    private final File configPath = new File(System.getProperty("user.home") + File.separator + ".jplayer");
+    private final File configFile = new File(configPath +  File.separator + "config.properties");
+
+
+    public Config(){
+        if (!configPath.mkdirs())
+            Globals.LOGGER.warning("Configuration directory not created!");
+
+    }
 
     public final void read() throws IOException {
         try (FileInputStream in = new FileInputStream(configFile)){
@@ -18,14 +26,9 @@ public class Config extends Properties {
             try {
                 read();
             } catch (InvalidPropertiesFormatException ignored) {}
-            storeToXML(out, "JPlayer configuration.");
+            storeToXML(out, "JPlayer configuration file."); //TODO: comment convection.
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public final void clear(){
-        clear();
-        save();
     }
 }

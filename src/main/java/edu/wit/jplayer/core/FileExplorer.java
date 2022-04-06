@@ -20,7 +20,6 @@ public class FileExplorer {
         } catch (IOException e) {
             directories.add(System.getProperty("user.home"));
             config.put("directories", String.join(",", directories));
-            config.put("directoriesNavigationIndex", directoriesNavigationIndex);
             config.save();
         }
     }
@@ -49,9 +48,9 @@ public class FileExplorer {
         ArrayList<String> filteredDirectoryFiles = new ArrayList<>();
         if (directoryFiles != null) {
             for (File file : directoryFiles) {
-                String name = file.getName();
-                if ((file.isDirectory() || Utils.HAS_VALID_EXTENSION(name)) && !name.startsWith("."))
-                    filteredDirectoryFiles.add(file.getName());
+                String fileName = file.getName();
+                if ((file.isDirectory() || Globals.HAS_VALID_EXTENSION(fileName)) && !fileName.startsWith("."))
+                    filteredDirectoryFiles.add(fileName);
             }
         }
         return filteredDirectoryFiles;
