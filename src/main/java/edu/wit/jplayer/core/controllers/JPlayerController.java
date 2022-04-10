@@ -4,7 +4,6 @@ import edu.wit.jplayer.Main;
 import edu.wit.jplayer.core.FileExplorer;
 import edu.wit.jplayer.core.Utils;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
@@ -23,8 +22,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.Locale;
 import java.util.Objects;
@@ -112,7 +109,6 @@ public class JPlayerController {
         mediaPlayer.setOnReady(() -> {
             displayMedia(media.getMetadata());
             mediaPlayer.play();
-
         });
         mediaPlayer.currentTimeProperty().addListener(mediaPlayerDurationListener());
     }

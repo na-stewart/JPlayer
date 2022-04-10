@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
+<?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="999.0" style="-fx-background-color: #2D2D30;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wit.jplayer.core.controllers.JPlayerController">
    <children>
       <AnchorPane prefHeight="612.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -23,28 +18,6 @@
             <Button layoutX="964.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&gt;&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
             <ListView fx:id="filesView" onMouseClicked="#onFileViewClick" prefHeight="519.0" prefWidth="999.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
             <TextField fx:id="filesViewFilterField" layoutX="777.0" layoutY="2.0" minHeight="20.0" prefHeight="26.0" prefWidth="152.0" promptText="Search..." AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="2.0" />
-            <HBox alignment="CENTER" layoutX="200.0" layoutY="558.0" prefHeight="54.0" prefWidth="600.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="199.0">
-               <children>
-                  <ImageView onMouseClicked="#skip">
-                     <image>
-                        <Image url="@../images/seek.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView onMouseClicked="#play">
-                     <image>
-                        <Image url="@../images/play.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView onMouseClicked="#rewind" pickOnBounds="true" rotate="180.0">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                     <image>
-                        <Image url="@../images/seek.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
             <HBox alignment="CENTER" layoutX="334.0" layoutY="538.0" prefHeight="40.0" prefWidth="332.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="333.0">
                <children>
                   <Text fx:id="mediaTimeElapsedText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" />
@@ -76,5 +49,27 @@
             <Text fx:id="mediaArtistText" fill="#c3c2c2" layoutX="67.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="67.0" />
          </children>
       </AnchorPane>
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="199.0">
+         <children>
+            <ImageView onMouseClicked="#skip">
+               <image>
+                  <Image url="@../images/seek.png" />
+               </image>
+            </ImageView>
+            <ImageView onMouseClicked="#play">
+               <image>
+                  <Image url="@../images/play.png" />
+               </image>
+            </ImageView>
+            <ImageView onMouseClicked="#rewind" pickOnBounds="true" rotate="180.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <image>
+                  <Image url="@../images/seek.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
