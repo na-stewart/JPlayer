@@ -108,6 +108,7 @@ public class JPlayerController {
             mediaPlayer.stop();
         Media media = new Media(new File(path).toURI().toURL().toExternalForm());
         mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.volumeProperty().bind(volumeSlider.valueProperty());
         mediaPlayer.setOnReady(() -> {
             displayMedia(media.getMetadata());
             mediaPlayer.play();

@@ -59,7 +59,7 @@
                         <Image url="@../images/volume-mute.png" />
                      </image>
                   </ImageView>
-                  <Slider fx:id="volumeSlider" value="50.0" />
+                  <Slider fx:id="volumeSlider" max="1.0" value="0.5" />
                   <ImageView fitHeight="18.0" fitWidth="18.0">
                      <image>
                         <Image url="@../images/volume-up.png" />
