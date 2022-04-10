@@ -45,11 +45,11 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="281.0" layoutY="538.0" prefHeight="40.0" prefWidth="438.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="280.0">
+            <HBox alignment="CENTER" layoutX="334.0" layoutY="538.0" prefHeight="40.0" prefWidth="332.0" spacing="5.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="333.0">
                <children>
-                  <Text fx:id="mediaTimeElapsedText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
-                  <Slider fx:id="seekSlider" onMousePressed="#seek" prefHeight="14.0" prefWidth="768.0" />
-                  <Text fx:id="mediaTimeRemainingText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" />
+                  <Text fx:id="mediaTimeElapsedText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" />
+                  <Slider fx:id="seekSlider" onMouseDragged="#seek" onMousePressed="#seek" onMouseReleased="#seek" prefHeight="14.0" prefWidth="768.0" />
+                  <Text fx:id="mediaTimeRemainingText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="825.0" layoutY="585.0" prefHeight="26.0" prefWidth="168.0" spacing="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="6.0">
@@ -59,7 +59,7 @@
                         <Image url="@../images/volume-mute.png" />
                      </image>
                   </ImageView>
-                  <Slider fx:id="volumeSlider" />
+                  <Slider fx:id="volumeSlider" value="50.0" />
                   <ImageView fitHeight="18.0" fitWidth="18.0">
                      <image>
                         <Image url="@../images/volume-up.png" />
@@ -67,21 +67,13 @@
                   </ImageView>
                </children>
             </HBox>
-            <ImageView fx:id="albumImageView" fitHeight="54.0" fitWidth="53.0" layoutX="7.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0">
-               <image>
-                  <Image url="@../images/album-placeholder.jpg" />
-               </image>
-            </ImageView>
-            <Text fx:id="mediaNameText" fill="WHITE" layoutX="70.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="35.486328125" AnchorPane.leftAnchor="70.0">
+            <ImageView fx:id="albumImageView" fitHeight="54.0" fitWidth="53.0" layoutX="7.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" />
+            <Text fx:id="mediaTitleText" fill="WHITE" layoutX="68.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="31.482421875" AnchorPane.leftAnchor="68.0">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="authorNameText" fill="WHITE" layoutX="70.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="35.865234375" AnchorPane.leftAnchor="70.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
+            <Text fx:id="mediaArtistText" fill="#c3c2c2" layoutX="67.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="67.0" />
          </children>
       </AnchorPane>
    </children>

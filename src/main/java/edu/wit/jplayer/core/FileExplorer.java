@@ -49,7 +49,7 @@ public class FileExplorer {
         if (directoryFiles != null) {
             for (File file : directoryFiles) {
                 String fileName = file.getName();
-                if ((file.isDirectory() || Globals.HAS_VALID_EXTENSION(fileName)) && !fileName.startsWith("."))
+                if ((file.isDirectory() || Utils.HAS_VALID_EXTENSION(fileName)) && !fileName.startsWith("."))
                     filteredDirectoryFiles.add(fileName);
             }
         }
