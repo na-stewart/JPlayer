@@ -19,8 +19,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -96,7 +94,7 @@ public class JPlayerController {
         int hours = seconds / (60 * 60) % 24;
         int mins = seconds / 60 % 60;
         int secs = seconds % 60;
-        return String.format("%02d:%02d:%02d", hours, mins, secs);
+        return hours > 0 ? String.format("%02d:%02d:%02d", hours, mins, secs) : String.format("%02d:%02d", mins, secs);
     }
 
     private ChangeListener<Duration> mediaPlayerDurationListener() {
@@ -122,13 +120,13 @@ public class JPlayerController {
         Media media = new Media(new File(path).toURI().toURL().toExternalForm());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.volumeProperty().bind(volumeSlider.valueProperty());
+        mediaPlayer.currentTimeProperty().addListener(mediaPlayerDurationListener());
         mediaPlayer.setOnReady(() -> {
             displayMedia(media.getMetadata());
             mediaPlayer.play();
             if (Utils.HAS_VALID_VIDEO_EXTENSION(path))
                 displayVideo();
         });
-        mediaPlayer.currentTimeProperty().addListener(mediaPlayerDurationListener());
     }
 
 
@@ -193,6 +191,11 @@ public class JPlayerController {
             mediaPlayer.pause();
         } else
             mediaPlayer.play();
+    }
+
+    @FXML
+    private void fullscreen(){
+        Main.MAIN_STAGE.setFullScreen(!Main.MAIN_STAGE.isFullScreen());
     }
 
     @FXML
