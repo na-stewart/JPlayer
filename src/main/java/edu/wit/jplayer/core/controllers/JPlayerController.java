@@ -16,8 +16,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -47,12 +51,24 @@ public class JPlayerController {
     private Slider volumeSlider;
     @FXML
     private Slider seekSlider;
+    @FXML
+    private MediaView mediaView;
+    @FXML
+    private AnchorPane mediaViewContainer;
+    @FXML
+    private HBox mediaControlContainer;
+    @FXML
+    private HBox volumeControlContainer;
+    @FXML
+    private HBox seekControlContainer;
     private final FileExplorer fileExplorer = new FileExplorer();
     private MediaPlayer mediaPlayer;
 
 
     public void initialize() {
         generateViews();
+        mediaView.fitWidthProperty().bind(mediaViewContainer.widthProperty());
+        mediaView.fitHeightProperty().bind(mediaViewContainer.heightProperty());
     }
 
     private void generateViews() {
@@ -100,6 +116,17 @@ public class JPlayerController {
         };
     }
 
+    private void displayMediaControls(boolean visible){
+        seekControlContainer.setVisible(visible);
+        mediaControlContainer.setVisible(visible);
+        volumeControlContainer.setVisible(visible);
+    }
+    private void displayVideo() {
+        mediaViewContainer.setVisible(true);
+        displayMediaControls(false);
+        mediaView.setMediaPlayer(mediaPlayer);
+    }
+
     private void playMedia(String path) throws MalformedURLException {
         if (mediaPlayer != null)
             mediaPlayer.stop();
@@ -109,6 +136,8 @@ public class JPlayerController {
         mediaPlayer.setOnReady(() -> {
             displayMedia(media.getMetadata());
             mediaPlayer.play();
+            if (Utils.HAS_VALID_VIDEO_EXTENSION(path))
+                displayVideo();
         });
         mediaPlayer.currentTimeProperty().addListener(mediaPlayerDurationListener());
     }
@@ -119,7 +148,7 @@ public class JPlayerController {
         String selected = filesView.getSelectionModel().getSelectedItem();
         String fullSelectedPath = directoryView.getText() + File.separator + selected;
         if (mouseEvent.getClickCount() == 2 && selected != null) {
-            if (Utils.HAS_VALID_EXTENSION(selected)) {
+            if (Utils.HAS_VALID_VIDEO_EXTENSION(selected) || Utils.HAS_VALID_AUDIO_EXTENSION(selected)) {
                 try {
                     playMedia(fullSelectedPath);
                 } catch (MalformedURLException e) {
@@ -175,5 +204,15 @@ public class JPlayerController {
             mediaPlayer.pause();
         } else
             mediaPlayer.play();
+    }
+
+    @FXML
+    private void showMediaControls(MouseEvent mouseEvent){
+        displayMediaControls(true);
+    }
+
+    @FXML
+    private void hideMediaControls(MouseEvent mouseEvent){
+        displayMediaControls(false);
     }
 }
