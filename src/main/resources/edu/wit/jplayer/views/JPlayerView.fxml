@@ -20,65 +20,69 @@
             </Text>
             <Button layoutX="929.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&lt;&lt;" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="2.0" />
             <Button layoutX="964.0" layoutY="2.0" minHeight="17.0" mnemonicParsing="false" onAction="#onPathNavigatorButtonAction" prefHeight="17.0" prefWidth="35.0" text="&gt;&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
-            <ListView fx:id="filesView" onMouseClicked="#onFileViewClick" prefHeight="519.0" prefWidth="999.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
+            <ListView fx:id="filesView" onKeyPressed="#hideMediaView" onMouseClicked="#onFileViewClick" prefHeight="519.0" prefWidth="999.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0" />
             <TextField fx:id="filesViewFilterField" layoutX="777.0" layoutY="2.0" minHeight="20.0" prefHeight="26.0" prefWidth="152.0" promptText="Search..." AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="2.0" />
-            <ImageView fx:id="albumImageView" fitHeight="54.0" fitWidth="53.0" layoutX="7.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" />
-            <Text fx:id="mediaTitleText" fill="WHITE" layoutX="68.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="31.482421875" AnchorPane.leftAnchor="68.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text fx:id="mediaArtistText" fill="#c3c2c2" layoutX="67.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="67.0" />
-            <AnchorPane fx:id="mediaViewContainer" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="mediaViewContainer" onKeyPressed="#hideMediaView" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" onMouseEntered="#hideMediaControls" preserveRatio="false" />
                   <Pane onMouseEntered="#showMediaControls" prefHeight="67.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
-            <HBox fx:id="mediaControlContainer" alignment="CENTER" layoutX="-1.0" prefHeight="54.0" prefWidth="999.0" spacing="30.0" style="-fx-background-color: #2D2D30;;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <AnchorPane fx:id="mediaControlsContainer" layoutY="533.0" prefHeight="80.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <ImageView onMouseClicked="#skip">
-                     <image>
-                        <Image url="@../images/seek.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView onMouseClicked="#play">
-                     <image>
-                        <Image url="@../images/play.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView onMouseClicked="#rewind" pickOnBounds="true" rotate="180.0">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                     <image>
-                        <Image url="@../images/seek.png" />
-                     </image>
-                  </ImageView>
+                  <HBox fx:id="mediaControlContainer" alignment="CENTER" prefHeight="54.0" prefWidth="999.0" spacing="30.0" style="-fx-background-color: #2D2D30;;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <ImageView onMouseClicked="#skip">
+                           <image>
+                              <Image url="@../images/seek.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView onMouseClicked="#play">
+                           <image>
+                              <Image url="@../images/play.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView onMouseClicked="#rewind" pickOnBounds="true" rotate="180.0">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <image>
+                              <Image url="@../images/seek.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="seekControlContainer" alignment="CENTER" prefHeight="32.0" prefWidth="999.0" spacing="5.0" style="-fx-background-color: #2D2D30;" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Text fx:id="mediaTimeElapsedText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" />
+                        <Slider fx:id="seekSlider" onMouseDragged="#seek" onMousePressed="#seek" onMouseReleased="#seek" prefHeight="14.0" prefWidth="283.0" />
+                        <Text fx:id="mediaTimeRemainingText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="volumeControlContainer" alignment="CENTER" prefHeight="26.0" prefWidth="200.0" spacing="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="6.0">
+                     <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0">
+                           <image>
+                              <Image url="@../images/volume-mute.png" />
+                           </image>
+                        </ImageView>
+                        <Slider fx:id="volumeSlider" max="1.0" prefHeight="12.0" prefWidth="159.0" value="0.5" />
+                        <ImageView fitHeight="18.0" fitWidth="18.0">
+                           <image>
+                              <Image url="@../images/volume-up.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="albumImageView" fitHeight="54.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" />
+                  <Text fx:id="mediaTitleText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="31.482421875" AnchorPane.leftAnchor="68.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="mediaArtistText" fill="#c3c2c2" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="67.0" />
                </children>
-            </HBox>
-            <HBox fx:id="seekControlContainer" alignment="CENTER" layoutX="1.0" layoutY="538.0" prefHeight="32.0" prefWidth="999.0" spacing="5.0" style="-fx-background-color: #2D2D30;" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Text fx:id="mediaTimeElapsedText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" />
-                  <Slider fx:id="seekSlider" onMouseDragged="#seek" onMousePressed="#seek" onMouseReleased="#seek" prefHeight="14.0" prefWidth="768.0" />
-                  <Text fx:id="mediaTimeRemainingText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" />
-               </children>
-            </HBox>
-            <HBox fx:id="volumeControlContainer" alignment="CENTER" layoutX="825.0" layoutY="585.0" prefHeight="26.0" prefWidth="168.0" spacing="1.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="6.0">
-               <children>
-                  <ImageView fitHeight="16.0" fitWidth="16.0">
-                     <image>
-                        <Image url="@../images/volume-mute.png" />
-                     </image>
-                  </ImageView>
-                  <Slider fx:id="volumeSlider" max="1.0" value="0.5" />
-                  <ImageView fitHeight="18.0" fitWidth="18.0">
-                     <image>
-                        <Image url="@../images/volume-up.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

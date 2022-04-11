@@ -15,6 +15,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -56,11 +58,7 @@ public class JPlayerController {
     @FXML
     private AnchorPane mediaViewContainer;
     @FXML
-    private HBox mediaControlContainer;
-    @FXML
-    private HBox volumeControlContainer;
-    @FXML
-    private HBox seekControlContainer;
+    private AnchorPane mediaControlsContainer;
     private final FileExplorer fileExplorer = new FileExplorer();
     private MediaPlayer mediaPlayer;
 
@@ -83,13 +81,9 @@ public class JPlayerController {
         })));
     }
 
-    private void displayMediaAlbumCover(Image image) {
-        albumImageView.setImage(Objects.requireNonNullElseGet(image, () ->
-                new Image(String.valueOf(Main.class.getResource("images/album-placeholder.jpg")))));
-    }
-
     private void displayMedia(ObservableMap<String, Object> metaData) {
-        displayMediaAlbumCover(metaData.containsKey("image") ? (Image) metaData.get("image") : null);
+        albumImageView.setImage(Objects.requireNonNullElseGet((Image) metaData.get("image"), () ->
+                new Image(String.valueOf(Main.class.getResource("images/album-placeholder.jpg")))));
         mediaArtistText.setText(metaData.containsKey("artist") ? metaData.get("artist").toString() : "");
         if (metaData.containsKey("title"))
             mediaTitleText.setText(metaData.get("title").toString());
@@ -116,14 +110,9 @@ public class JPlayerController {
         };
     }
 
-    private void displayMediaControls(boolean visible){
-        seekControlContainer.setVisible(visible);
-        mediaControlContainer.setVisible(visible);
-        volumeControlContainer.setVisible(visible);
-    }
     private void displayVideo() {
         mediaViewContainer.setVisible(true);
-        displayMediaControls(false);
+        mediaControlsContainer.setVisible(true);
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
@@ -207,12 +196,21 @@ public class JPlayerController {
     }
 
     @FXML
-    private void showMediaControls(MouseEvent mouseEvent){
-        displayMediaControls(true);
+    private void showMediaControls(){
+        mediaControlsContainer.setVisible(true);
     }
 
     @FXML
-    private void hideMediaControls(MouseEvent mouseEvent){
-        displayMediaControls(false);
+    private void hideMediaControls(){
+        mediaControlsContainer.setVisible(false);
+    }
+
+    @FXML
+    private void hideMediaView(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
+            mediaViewContainer.setVisible(false);
+            mediaControlsContainer.setVisible(true);
+            mediaPlayer.stop();
+        }
     }
 }
