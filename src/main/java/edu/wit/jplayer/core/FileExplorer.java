@@ -20,6 +20,7 @@ public class FileExplorer {
         } catch (IOException e) {
             directories.add(System.getProperty("user.home"));
             config.put("directories", String.join(",", directories));
+            config.put("directories_navigation_index", String.valueOf(0));
             config.save();
         }
     }
